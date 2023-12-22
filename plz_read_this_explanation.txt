@@ -1,0 +1,28 @@
+--- For Better Communication
+
+To begin with, I wanted to illustrate a simplified overview of the map layout for better communication. This map is divided into a grid system consisting of rows and columns, with each grid assigned a numerical value that corresponds to a specific tile image. 
+
+For instance, the designation of -1 is used to represent empty spaces, such as the sky or background imagery (i.e, jets, meteoroids) or any of the background images that the characters can’t interact with. Conversely, items such as decorative boxes, grass, platforms, and mudbricks are assigned unique numbers that are tied to their corresponding grid locations. This information is stored within a python list and subsequently exported to three distinct CSV files. Each file corresponds to a specific game level, with differing item layouts and altitudes.
+
+To further explain this numerical system, consider the first CSV file for the initial level. The top left corner contains a -1 designation, representing an empty grid. The following five numbers in the first column are also -1, as they too represent empty spaces. However, the sixth number is 0, indicating the first mudbrick on the ground. The seventh number represents a different mudbrick (underground mudbricks), denoted by the number 4, and so forth. This process of assigning values to grid locations is facilitated by a level editor that I’ve used, which streamlines the map creation process.
+
+
+
+--- AI Part (my favourite)
+
+I finally managed to do this with some research, I've been trying to add some sort of AI in some project for a while now. 
+Some section of this program is responsible for controlling the behavior of an AI object (enemy players in this game).
+
+The AI enemy is designed to move around in the game world and attack the player.
+
+The ai() method first checks whether both the AI and the player are alive. 
+If so, it checks whether the AI is idling and whether it should switch to idle mode (based on a random integer). 
+If the AI is idling, it sets its animation to idle and decrements a counter. If the counter reaches zero, the AI switches back to non-idle mode.
+
+If the AI is not idling, the method checks whether the player is within the AI's vision (i.e., an imagery rectangular area around the AI). If the player is within the AI's vision, the AI stops moving, faces the player, and shoots.
+
+If the player is not within the AI's vision (outside of the imagery rectangular area), the AI moves either left or right and updates its vision accordingly. If the AI has moved a certain distance, it changes direction. Note that TILE_SIZE is a constant that represents the size of a tile in the game world.
+
+The method updates the AI's animation based on its movement and whether it is idling, and returns nothing.
+
+Hopefully, I explained everything that needed to be explained and more clear :)
